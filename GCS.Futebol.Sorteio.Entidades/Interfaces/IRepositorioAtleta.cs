@@ -3,9 +3,7 @@
 namespace GCS.Futebol.Sorteio.Entidades.Interfaces;
 
 public interface IRepositorioAtleta : IRepositorio<Atleta>
-{
-    IUnityOfWork UnityOfWork { get; }
-
+{ 
     Task<Atleta> ObterAsync(Guid id);
     Task<IEnumerable<Atleta>> ObterTodosAsync();
 

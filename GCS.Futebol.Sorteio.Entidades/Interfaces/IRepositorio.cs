@@ -3,5 +3,6 @@
     public interface IRepositorio<T> : IDisposable
         where T : IAggregateRoot
     {
+        IUnityOfWork UnityOfWork { get; }
     }
 }

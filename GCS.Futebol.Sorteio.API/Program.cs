@@ -1,4 +1,6 @@
 using GCS.Futebol.Sorteio.BD.Contextos;
+using GCS.Futebol.Sorteio.BD.Repositorios;
+using GCS.Futebol.Sorteio.Entidades.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,9 @@ var services = builder.Services;
 
 var stringDeConexaoPadrao = builder.Configuration.GetConnectionString("Padrao");
 services.AddDbContext<ContextoAtleta>(options => options.UseSqlServer(stringDeConexaoPadrao));
+
+services.AddScoped<ContextoAtleta>();
+services.AddScoped<IRepositorioAtleta, RepositorioAtleta>();
 
 var app = builder.Build();
 
