@@ -1,9 +1,10 @@
 ﻿using GCS.Futebol.Sorteio.Entidades.Classes.DTO;
 using GCS.Futebol.Sorteio.Entidades.Enums;
+using GCS.Futebol.Sorteio.Entidades.Interfaces;
 
 namespace GCS.Futebol.Sorteio.Entidades.Classes.Modelos;
 
-public class Atleta : EntityBase
+public class Atleta : EntityBase, IAggregateRoot
 {
     #region Variáveis
     private readonly List<EnumPosicaoAtleta> _posicoes = new();
@@ -13,13 +14,19 @@ public class Atleta : EntityBase
     public string Nome { get; private set; }
     public string? Apelido { get; private set; }
     public EnumNotaAtleta Nota { get; private set; }
-    public IReadOnlyCollection<EnumPosicaoAtleta> Posicoes => _posicoes;
+    public string Posicoes { get; private set; }
+    public IReadOnlyCollection<EnumPosicaoAtleta> PosicoesFormatadas => _posicoes;
 
     //Passar para a ViewModel
     public string NomeMostrar => Apelido ?? Nome;
     #endregion
 
     #region Construtores
+    /// <summary>
+    /// Somente para o EF
+    /// </summary>
+    protected Atleta() { }
+
     public Atleta(DTOCadastrarAtleta cadastrarAtleta)
         : base()
         => PreencherDados(cadastrarAtleta.Nome, cadastrarAtleta.Apelido, cadastrarAtleta.Nota);
@@ -38,7 +45,7 @@ public class Atleta : EntityBase
     public void AlterarNota(EnumNotaAtleta notaAtleta) => Nota = notaAtleta;
 
     public DTORetornoCadastrarAtleta ParaDTORetornoCadastrarAtleta()
-        => new(Id, Nome, Apelido, Nota, Posicoes.ToList());
+        => new(Id, Nome, Apelido, Nota, PosicoesFormatadas.ToList());
 
     private void PreencherDados(string nome, string? apelido, EnumNotaAtleta nota)
     {
