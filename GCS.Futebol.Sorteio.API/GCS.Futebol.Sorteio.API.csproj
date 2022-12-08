@@ -7,16 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <None Remove="V1\Modelos\Classes\Modelos\Atleta.cs~RFa448638.TMP" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GCS.Futebol.Sorteio.BD\GCS.Futebol.Sorteio.BD.csproj" />
-    <ProjectReference Include="..\GCS.Futebol.Sorteio.Entidades\GCS.Futebol.Sorteio.Entidades.csproj" />
+    <PackageReference Include="LiteDB" Version="5.0.12" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
 </Project>
