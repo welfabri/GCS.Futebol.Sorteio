@@ -2,9 +2,9 @@
 
 namespace GCS.Futebol.Sorteio.API.V1.Modelos.Classes.DTO;
 
-public class DTORetornoCadastrarAtleta
+public class DTORetornoCadastrarJogador
 {
-    public DTORetornoCadastrarAtleta(int id, string nome, string? apelido, EnumNotaAtleta nota,
+    public DTORetornoCadastrarJogador(int id, string nome, string? apelido, EnumNotaAtleta nota,
         List<EnumPosicaoAtleta> posicoes)
     {
         Nome = nome;

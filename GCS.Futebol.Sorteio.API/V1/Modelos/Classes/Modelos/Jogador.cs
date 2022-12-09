@@ -3,7 +3,7 @@ using GCS.Futebol.Sorteio.API.V1.Modelos.Enums;
 
 namespace GCS.Futebol.Sorteio.API.V1.Modelos.Classes.Modelos;
 
-public class Atleta : EntityBase
+public class Jogador : EntityBase
 {
     #region Variáveis
     private readonly List<EnumPosicaoAtleta> _posicoes = new();
@@ -21,7 +21,7 @@ public class Atleta : EntityBase
     #endregion
 
     #region Construtores
-    public Atleta(DTOCadastrarAtleta cadastrarAtleta)
+    public Jogador(DTOCadastrarJogador cadastrarAtleta)
         : base()
         => PreencherDados(cadastrarAtleta.Nome, cadastrarAtleta.Apelido, cadastrarAtleta.Nota);
     #endregion
@@ -38,7 +38,7 @@ public class Atleta : EntityBase
 
     public void AlterarNota(EnumNotaAtleta notaAtleta) => Nota = notaAtleta;
 
-    public DTORetornoCadastrarAtleta ParaDTORetorno()
+    public DTORetornoCadastrarJogador ParaDTORetorno()
         => new(Id, Nome, Apelido, Nota, PosicoesFormatadas.ToList());
 
     private void PreencherDados(string nome, string? apelido, EnumNotaAtleta nota)

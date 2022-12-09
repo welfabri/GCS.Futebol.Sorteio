@@ -1,5 +1,7 @@
 using GCS.Futebol.Sorteio.API.V1.Infra.Contextos;
 using GCS.Futebol.Sorteio.API.V1.Modelos.Classes.DTO;
+using GCS.Futebol.Sorteio.API.V1.Modelos.Classes.DTO.Parametros;
+using GCS.Futebol.Sorteio.API.V1.Modelos.Classes.DTO.Retornos;
 using GCS.Futebol.Sorteio.API.V1.Modelos.Classes.Modelos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,24 +26,24 @@ public class SorteioController : ControllerBase
     }
 
     /*
-    [HttpPost("cadastrar-turma")]
-    public ActionResult<DTORetornoCadastrarTurma> CadastrarTurma(DTOCadastrarTurma dto)
+    [HttpPost("cadastrar-equipe")]
+    public ActionResult<DTORetornoCadastrarEquipe> CadastrarTurma(DTOCadastrarEquipe dto)
     {
         if (dto is null)
             return BadRequest();
 
         try
         {
-            CadastroTurma turma = new(dto);
+            CadastroEquipe equipe = new(dto);
 
             using (var bd = ContextoBD.CriarBD())
             {
-                var id = bd.GetCollection<CadastroTurma>().Insert(turma);
+                var id = bd.GetCollection<CadastroEquipe>().Insert(equipe);
                 bd.Commit();
 
-                DTORetornoCadastrarTurma result = new(id,
-                    turma.Nome, turma.Apelido, turma.Nota,
-                    turma.PosicoesFormatadas.ToList());
+                DTORetornoCadastrarEquipe result = new(id,
+                    equipe.Nome, equipe.Apelido, equipe.Nota,
+                    equipe.PosicoesFormatadas.ToList());
 
                 return Ok(result);
             }
@@ -86,21 +88,21 @@ public class SorteioController : ControllerBase
     */
 
     [HttpPost("cadastrar-atleta")]
-    public ActionResult<DTORetornoCadastrarAtleta> CadastrarAtleta(DTOCadastrarAtleta dto)
+    public ActionResult<DTORetornoCadastrarJogador> CadastrarAtleta(DTOCadastrarJogador dto)
     {
         if (dto is null)
             return BadRequest();
 
         try
         {
-            Atleta atleta = new(dto);
+            Jogador atleta = new(dto);
             
             using (var bd = ContextoBD.CriarBD())
             {
-                var id = bd.GetCollection<Atleta>().Insert(atleta);
+                var id = bd.GetCollection<Jogador>().Insert(atleta);
                 bd.Commit();
 
-                DTORetornoCadastrarAtleta result = new(id,
+                DTORetornoCadastrarJogador result = new(id,
                     atleta.Nome, atleta.Apelido, atleta.Nota,
                     atleta.PosicoesFormatadas.ToList());
 

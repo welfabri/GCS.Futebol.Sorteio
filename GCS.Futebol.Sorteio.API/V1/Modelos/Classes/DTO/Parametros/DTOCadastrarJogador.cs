@@ -2,9 +2,9 @@
 
 namespace GCS.Futebol.Sorteio.API.V1.Modelos.Classes.DTO;
 
-public class DTOCadastrarAtleta
+public class DTOCadastrarJogador
 {
-    public DTOCadastrarAtleta(string nome, string? apelido,
+    public DTOCadastrarJogador(string nome, string? apelido,
         EnumNotaAtleta nota, EnumPosicaoAtleta posicao)
     {
         Nome = nome;
